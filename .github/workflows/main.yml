@@ -7,14 +7,15 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Install Tofu
-      run: 
-        # Download the installer script:
-        curl --proto '=https' --tlsv1.2 -fsSL https://get.opentofu.org/install-opentofu.sh -o install-opentofu.sh
-        # Give it execution permissions:
-        chmod +x install-opentofu.sh
-        # Run the installer:
-        sudo ./install-opentofu.sh --install-method deb
-    - name: Run go
-      run: bash go.sh
+      - name: Checkout
+      - uses: actions/checkout@v2 
+      - name: Install Tofu
+        run: |
+          # Download the installer script:
+          curl --proto '=https' --tlsv1.2 -fsSL https://get.opentofu.org/install-opentofu.sh -o install-opentofu.sh
+          # Give it execution permissions:
+          chmod +x install-opentofu.sh
+          # Run the installer:
+          sudo ./install-opentofu.sh --install-method deb
+      - name: Run go
+        run: bash go.sh
